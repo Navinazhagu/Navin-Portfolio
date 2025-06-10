@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Navin A | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+      background: #f0f4f8;
+      color: #212121;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      padding: 1rem 2rem;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      padding: 0.6rem 1rem;
+      border-radius: 20px;
+      background: #1976d2;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #2196f3;
+      transform: scale(1.1);
+    }
+
+    header {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(to right, #2196f3, #e3f2fd);
+    }
+
+    .header-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    header img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    .name-style {
+      font-size: 2.5rem;
+      font-family: 'Fira Code', monospace;
+      background: linear-gradient(to right, #1a237e, #00bcd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeIn 2s ease;
+    }
+
+    .typewriter {
+      font-size: 1.4rem;
+      color: #0d47a1;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #0d47a1;
+      animation: typing 4s steps(40, end), blink-caret 0.8s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #0d47a1 }
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      color: #0d47a1;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+
+    .skill {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .skill img {
+      width: 40px;
+      margin-right: 1rem;
+    }
+
+    .skill-bar {
+      flex-grow: 1;
+      background: #ccc;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, #4caf50, #81c784);
+      width: 0;
+      border-radius: 6px;
+      transition: width 1.2s ease;
+    }
+
+    .project {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 1rem;
+      gap: 1rem;
+      background: #f1f8e9;
+      padding: 1rem;
+      border-left: 5px solid #4caf50;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .project img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+    }
+
+    .education-entry {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      background: #e3f2fd;
+      padding: 1rem;
+      border-left: 4px solid #2196f3;
+      border-radius: 10px;
+      transition: transform 0.4s ease;
+    }
+
+    .education-entry:hover {
+      transform: scale(1.02);
+    }
+
+    .education-entry img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    footer {
+      background: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: #0d47a1;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .contact-link:hover {
+      background: #1565c0;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            if (entry.target.id === 'skills') {
+              document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                bar.style.width = bar.getAttribute('data-level');
+              });
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('section').forEach(section => observer.observe(section));
+    });
+  </script>
+</head>
+
+<body>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+    <a href="#resume">Resume</a>
+  </nav>
+
+  <header>
+    <div class="header-flex">
+      <img src="01.jpg" alt="Navin A">
+      <div>
+        <div class="name-style">Navin A</div>
+        <div class="typewriter">Hello, I'm Navin</div>
+        <p>Web Developer | ECE Engineer | Java Programmer</p>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm Navin A, a passionate and detail-oriented Electronics and Communication Engineering (ECE) student with a strong interest in web development and programming. I have hands-on experience in building responsive websites using HTML, CSS, and JavaScript, and I'm also proficient in Java for back-end development. My curiosity in technology drives me to explore embedded systems and IoT-based solutions that bridge software and hardware. Throughout my academic journey, I've worked on impactful projects that combine innovation and real-world problem-solving—ranging from wearable health sensors to library automation systems. I enjoy collaborating in team environments, quickly adapt to new technologies, and constantly seek opportunities to grow as a developer and engineer. I’m currently seeking internship or entry-level opportunities where I can apply my technical skills, contribute to meaningful projects, and continue learning in a professional setting</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill"><img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png"/><div class="skill-bar"><div class="skill-bar-fill" data-level="75%"></div></div></div>
+    <div class="skill"><img src="https://img.icons8.com/color/48/000000/html-5.png"/><div class="skill-bar"><div class="skill-bar-fill" data-level="90%"></div></div></div>
+    <div class="skill"><img src="https://img.icons8.com/color/48/000000/javascript.png"/><div class="skill-bar"><div class="skill-bar-fill" data-level="60%"></div></div></div>
+    <div class="skill"><img src="https://img.icons8.com/office/48/ms-excel.png"/><div class="skill-bar"><div class="skill-bar-fill" data-level="85%"></div></div></div>
+    
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="education-entry">
+      <img src="logo.jpg">
+      <div><strong>BE - Muthayammal College of Engineering</strong><br>Electronics and Communication Engineering<br>CGPA: 7.5/10<br>2021–2025</div>
+    </div>
+    <div class="education-entry">
+      <img src="https://img.icons8.com/color/96/school.png"/>
+      <div><strong>HSC - Higher Secondary School</strong><br>Percentage: 79%<br>2020–2021</div>
+    </div>
+    <div class="education-entry">
+      <img src="https://img.icons8.com/color/96/classroom.png"/>
+      <div><strong>SSLC - Govt Higher Secondary School</strong><br>Percentage: 71%<br>2018–2019</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <img src="https://img.icons8.com/clouds/100/heart-with-pulse.png"/>
+      <div>
+        <h3>Multimodal Data Fusion Technique for Heartbeat Detection in Wearable IoT Sensors</h3>
+        <p>Wearable IoT sensors used to monitor heartbeat using data fusion for better accuracy.</p>
+      </div>
+    </div>
+    <div class="project">
+      <img src="https://img.icons8.com/3d-fluency/100/books.png"/>
+      <div>
+        <h3>Library Catalogue System</h3>
+        <p>Organized a smart library system using Java and SQL for seamless book management.</p>
+      </div>
+    </div>
+    <div class="project">
+      <img src="https://img.icons8.com/3d-fluency/100/health-book.png"/>
+      <div>
+        <h3>Remote Patient Monitoring</h3>
+        <p>IoT-enabled health monitoring system to track vitals and alert doctors in real-time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p><strong>Email:</strong> navinazhagu10@gmail.com</p>
+    <p><strong>Phone:</strong> +91 63697 40067</p>
+    <p><strong>Address:</strong> Tamil Nadu, India</p>
+  </section>
+
+  <section id="resume">
+    <h2>My Resume</h2>
+    <a href="NAVIN_Resume.pdf" download class="contact-link"><i class="fas fa-file-download"></i> Download Resume</a>
+  </section>
+
+  <section id="links">
+    <h2>Social Links</h2>
+    <a class="contact-link" href="https://www.linkedin.com/in/navin-a-6b050029b" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <a class="contact-link" href="https://github.com/Navinazhagu" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Navin A. All rights reserved.
+  </footer>
+</body>
+</html>
